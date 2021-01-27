@@ -95,7 +95,7 @@ export default {
           experiencia: 'expérience',
           experienciaProfesional: 'Experience PROFESSIONNELLE',
           experienciaLaboral: 'expérience professionnelle',
-          Hi: 'Salut, je suis Triviño 🤘',
+          Hi: 'Salut, je suis Ariel Triviño 🤘',
           parrafo1SobreMi: 'Je suis développeur backend, en',
           parrafo2SobreMi:
             'société dans laquelle je suis depuis 2017, dans laquelle, aucun Nous réalisons uniquement des travaux de développement mais aussi infrastructure et réseaux.',
