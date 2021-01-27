@@ -40,13 +40,23 @@ export default {
     'nuxt-i18n',
   ],
   i18n: {
-    locales: ['en', 'fr', 'es'],
+    locales: [
+      {
+        code: 'en',
+        name: 'English',
+      },
+      {
+        code: 'es',
+        name: 'Español',
+      },
+      {
+        code: 'fr',
+        name: 'Français',
+      }
+    ],
     defaultLocale: 'en',
     vueI18n: {
-      detectBrowserLanguage: {
-        useCookie: true,
-        alwaysRedirect: true,
-      },
+      strategy: 'prefix',
       fallbackLocale: 'es',
       messages: {
         en: {

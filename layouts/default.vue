@@ -8,7 +8,8 @@
       </div>
       <div class="block lg:hidden">
         <button
-          class="navbar-burger flex items-center py-2 px-3 text-indigo-500 rounded border border-indigo-500"
+          class="navbar-burger flex items-center py-2 px-3 text-green-500 rounded border border-green-500 sm:hidden p-6"
+          @click="menu = !menu"
         >
           <svg
             class="fill-current h-3 w-3"
@@ -23,19 +24,19 @@
       <div class="navbar-menu hidden lg:order-1 lg:block w-full lg:w-2/5">
         <NuxtLink
           class="block lg:inline-block mt-4 lg:mt-0 mr-10 text-blue-900 hover:text-black"
-          to="/"
+          :to="localePath('/')"
         >
           Home
         </NuxtLink>
         <NuxtLink
           class="block lg:inline-block mt-4 lg:mt-0 mr-10 text-blue-900 hover:text-black"
-          to="/about"
+          :to="localePath('/about')"
         >
           About me
         </NuxtLink>
         <NuxtLink
           class="block lg:inline-block mt-4 lg:mt-0 mr-10 text-blue-900 hover:text-black"
-          to="/projects"
+          :to="localePath('/projects')"
         >
           Projects
         </NuxtLink>
@@ -45,16 +46,74 @@
       >
         <NuxtLink
           class="block lg:inline-block mt-4 lg:mt-0 mr-10 text-blue-900 hover:text-black"
-          to="/resume"
+          :to="localePath('/resume')"
         >
           Resume
         </NuxtLink>
+
+        <NuxtLink
+          v-for="locale in availableLocales"
+          :key="locale.code"
+          class="block lg:inline-block mt-4 lg:mt-0 mr-10 text-blue-900 hover:text-black"
+          :to="switchLocalePath(locale.code)"
+          @click="setLocaleCookie(locale)"
+          >{{ locale.name }}
+        </NuxtLink>
       </div>
+    </nav>
+    <nav v-show="menu" class="w-full">
+      <ul class="flex flex-col text-center">
+        <li>
+          <NuxtLink
+            class="block lg:inline-block mt-4 lg:mt-0 mr-10 text-blue-900 hover:text-black hover:bg-green-500"
+            :to="localePath('/')"
+          >
+            Home
+          </NuxtLink>
+        </li>
+        <li>
+          <NuxtLink
+            class="block lg:inline-block mt-4 lg:mt-0 mr-10 text-blue-900 hover:text-black hover:bg-green-500"
+            :to="localePath('/about')"
+          >
+            About me
+          </NuxtLink>
+        </li>
+        <li>
+          <NuxtLink
+            class="block lg:inline-block mt-4 lg:mt-0 mr-10 text-blue-900 hover:text-black hover:bg-green-500"
+            :to="localePath('/projects')"
+          >
+            Projects
+          </NuxtLink>
+        </li>
+        <li>
+          <NuxtLink
+            class="block lg:inline-block mt-4 lg:mt-0 mr-10 text-blue-900 hover:text-black hover:bg-green-500"
+            :to="localePath('/resume')"
+          >
+            Resume
+          </NuxtLink>
+        </li>
+      </ul>
     </nav>
     <Nuxt />
   </div>
 </template>
-
+<script>
+export default {
+  data() {
+    return {
+      menu: false,
+    }
+  },
+  computed: {
+    availableLocales() {
+      return this.$i18n.locales.filter((i) => i.code !== this.$i18n.locale)
+    },
+  },
+}
+</script>
 <style>
 html {
   font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
