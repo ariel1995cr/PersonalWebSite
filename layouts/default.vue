@@ -95,6 +95,16 @@
             Resume
           </NuxtLink>
         </li>
+        <li>
+          <NuxtLink
+            v-for="locale in availableLocales"
+            :key="locale.code"
+            class="block lg:inline-block mt-4 lg:mt-0 mr-10 text-blue-900 hover:text-black"
+            :to="switchLocalePath(locale.code)"
+            @click="setLocaleCookie(locale)"
+            >{{ locale.name }}
+          </NuxtLink>
+        </li>
       </ul>
     </nav>
     <Nuxt />

@@ -52,7 +52,7 @@ export default {
       {
         code: 'fr',
         name: 'Français',
-      }
+      },
     ],
     defaultLocale: 'en',
     vueI18n: {
@@ -152,6 +152,4 @@ export default {
     continuous: true,
     duration: 3000,
   },
-
-  
 }
